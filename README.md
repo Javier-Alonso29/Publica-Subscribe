@@ -1,4 +1,4 @@
-# Capítulo 4
+# Arquitecturas Publica-Suscribe
 
 ## Sistema de Monitoreo de Adultos Mayores (SMAM)
 
