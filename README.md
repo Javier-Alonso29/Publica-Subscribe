@@ -2,9 +2,9 @@
 
 ## Sistema de Monitoreo de Adultos Mayores (SMAM)
 
-Para el ejemplo práctico vamos a suponer la existencia de un asilo llamado Seten en el que viven un grupo de adultos mayores. Parte del personal que trabaja en el asilo, entre otras tareas, se dedica a monitorear el estado de salud de estas personas. 
+Existe un asilo llamado Divina Providencia en el que viven un grupo de adultos mayores. Parte del personal que trabaja en el asilo, entre otras tareas, se dedica a atender las necesidades de los adultos mayores y a monitorear su estado de salud.
 
-Supongamos también que la fundación Arroyo de la Plata, que es una fundación altruista en la región, decidió a manera de donación desarrollarle al asilo un sistema de cómputo para realizar de forma (semi-)automática las actividades de monitoreo del estado de salud de los adultos mayores. Para ello, la fundación utilizó un conjunto de dispositivos wearables, de la marca Xiaomi My Band, que portan cada uno de los adultos mayores y permiten conocer algunos de sus signos vitales. Así, mediante el envío de información sobre ritmo cardiaco, presión arterial y temperatura estos dispositivos permitirán a los operadores del sistema monitorear en tiempo real a cada uno de los adultos mayores y de esta forma ser más eficientes en la prevención de incidencias. El monitoreo de los signos vitales se hará a través de un visor.
+La fundación Catalina Huffmann, que es una fundación altruista en la región, decidió, a manera de donación, desarrollarle al asilo un sistema de cómputo para realizar las actividades de monitoreo del estado de salud de los adultos mayores de forma (semi-)automática. Para ello, la fundación utilizó un conjunto de dispositivos “wearables” que portan cada uno de los adultos mayores. Mediante el envío de información sobre ritmo cardiaco, presión arterial y temperatura, estos dispositivos “wearables” permiten monitorear en tiempo real a cada uno de los adultos mayores y de esta forma ser más eficientes en la prevención de incidencias.
 
 En la siguiente figura se muestra el diseño de la propuesta de solución del departamento de desarrollo para el SMAM.
 
