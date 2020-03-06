@@ -55,17 +55,17 @@ class Simulador:
         print('|  Bienvenido al Simulador Publica-Subscribe  |')
         print('+---------------------------------------------+')
         print('')
-        raw_input('presiona enter para continuar: ')
+        input('presiona enter para continuar: ')
         print('+---------------------------------------------+')
         print('|        CONFIGURACIÓN DE LA SIMULACIÓN       |')
         print('+---------------------------------------------+')
-        adultos_mayores = raw_input('|        número de adultos mayores: ')
+        adultos_mayores = input('|        número de adultos mayores: ')
         print('+---------------------------------------------+')
-        raw_input('presiona enter para continuar: ')
+        input('presiona enter para continuar: ')
         print('+---------------------------------------------+')
         print('|            ASIGNACIÓN DE SENSORES           |')
         print('+---------------------------------------------+')
-        for x in xrange(0, int(adultos_mayores)):
+        for x in range(0, int(adultos_mayores)):
             s = XiaomiMyBand(self.id_inicial)
             self.sensores.append(s)
             print('| wearable Xiaomi My Band asignado, id: ' + str(self.id_inicial))
@@ -74,11 +74,11 @@ class Simulador:
         print('+---------------------------------------------+')
         print('|        LISTO PARA INICIAR SIMULACIÓN            |')
         print('+---------------------------------------------+')
-        raw_input('presiona enter para iniciar: ')
+        input('presiona enter para iniciar: ')
         self.start_sensors()
 
     def start_sensors(self):
-        for x in xrange(0, 1000):
+        for x in range(0, 1000):
             for s in self.sensores:
                 s.publish()
 

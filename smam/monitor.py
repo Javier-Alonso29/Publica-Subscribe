@@ -47,12 +47,12 @@
 class Monitor:
 
     def print_notification(self, datetime, id, value, name_param, model):
-        print "  ---------------------------------------------------"
-        print "    ADVERTENCIA"
-        print "  ---------------------------------------------------"
-        print "    Se ha detectado un incremento de " + str(name_param) + " (" + str(value) + ")" + " a las " + str(self.format_datetime(datetime)) + " en el adulto mayor que utiliza el dispositivo " + str(model) + ":" + str(id)
-        print ""
-        print ""
+        print("  ---------------------------------------------------")
+        print("    ADVERTENCIA")
+        print("  ---------------------------------------------------")
+        print("    Se ha detectado un incremento de " + str(name_param) + " (" + str(value) + ")" + " a las " + str(self.format_datetime(datetime)) + " en el adulto mayor que utiliza el dispositivo " + str(model) + ":" + str(id))
+        print("")
+        print("")
 
     def format_datetime(self, datetime):
         values_datetime = datetime.split(':')
