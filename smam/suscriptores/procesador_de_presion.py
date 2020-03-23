@@ -77,7 +77,7 @@ class ProcesadorPresion:
             # Publicador
             channel.queue_declare(queue='blood_preasure', durable=True)
             channel.basic_qos(prefetch_count=1)
-            channel.basic_consume(self.callback, queue='blood_preasure')
+            channel.basic_consume(on_message_callback=self.callback, queue='blood_preasure')
             channel.start_consuming()  # Se realiza la suscripción en el Distribuidor de Mensajes
         except (KeyboardInterrupt, SystemExit):
             channel.close()  # Se cierra la conexión
@@ -87,6 +87,7 @@ class ProcesadorPresion:
 
     def callback(self, ch, method, properties, body):
         json_message = self.string_to_json(body)
+        
         if int(json_message['blood_preasure']) > 110:
             monitor = Monitor()
             monitor.print_notification(json_message['datetime'], json_message['id'], json_message[
@@ -96,6 +97,8 @@ class ProcesadorPresion:
 
     def string_to_json(self, string):
         message = {}
+        
+        string = string.decode('utf-8')
         string = string.replace('{', '')
         string = string.replace('}', '')
         values = string.split(', ')

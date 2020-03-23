@@ -77,7 +77,7 @@ class ProcesadorTemperatura:
             # Publicador
             channel.queue_declare(queue='body_temperature', durable=True)
             channel.basic_qos(prefetch_count=1)
-            channel.basic_consume(self.callback, queue='body_temperature')
+            channel.basic_consume(on_message_callback=self.callback, queue='body_temperature')
             channel.start_consuming()  # Se realiza la suscripción en el Distribuidor de Mensajes
         except (KeyboardInterrupt, SystemExit):
             channel.close()  # Se cierra la conexión
@@ -96,6 +96,8 @@ class ProcesadorTemperatura:
 
     def string_to_json(self, string):
         message = {}
+        
+        string = string.decode('utf-8')
         string = string.replace('{', '')
         string = string.replace('}', '')
         values = string.split(', ')

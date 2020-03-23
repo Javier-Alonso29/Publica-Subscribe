@@ -77,7 +77,7 @@ class ProcesadorRitmoCardiaco:
             # Publicador
             channel.queue_declare(queue='heart_rate', durable=True)
             channel.basic_qos(prefetch_count=1)
-            channel.basic_consume(self.callback, queue='heart_rate')
+            channel.basic_consume(on_message_callback=self.callback, queue='heart_rate')
             channel.start_consuming()  # Se realiza la suscripción en el Distribuidor de Mensajes
         except (KeyboardInterrupt, SystemExit):
             channel.close()  # Se cierra la conexión
@@ -96,6 +96,8 @@ class ProcesadorRitmoCardiaco:
 
     def string_to_json(self, string):
         message = {}
+
+        string = string.decode('utf-8')
         string = string.replace('{', '')
         string = string.replace('}', '')
         values = string.split(', ')
