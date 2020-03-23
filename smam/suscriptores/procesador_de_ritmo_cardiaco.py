@@ -96,7 +96,6 @@ class ProcesadorRitmoCardiaco:
 
     def string_to_json(self, string):
         message = {}
-
         string = string.decode('utf-8')
         string = string.replace('{', '')
         string = string.replace('}', '')
