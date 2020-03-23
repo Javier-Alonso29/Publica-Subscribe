@@ -87,7 +87,6 @@ class ProcesadorPresion:
 
     def callback(self, ch, method, properties, body):
         json_message = self.string_to_json(body)
-        
         if int(json_message['blood_preasure']) > 110:
             monitor = Monitor()
             monitor.print_notification(json_message['datetime'], json_message['id'], json_message[
@@ -97,7 +96,6 @@ class ProcesadorPresion:
 
     def string_to_json(self, string):
         message = {}
-        
         string = string.decode('utf-8')
         string = string.replace('{', '')
         string = string.replace('}', '')
