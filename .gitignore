@@ -44,3 +44,4 @@ venv.bak/
 
 # Development tools
 .vscode/
+.DS_Store
