@@ -4,7 +4,7 @@ Esta carpeta contiene los suscriptores del SMAM.
 
 ## Versión
 
-2.0.1 - Mayo 2017
+2.1.1 - Marzo 2020
 
 ## Autores
 

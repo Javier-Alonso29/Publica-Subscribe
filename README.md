@@ -68,11 +68,30 @@ En la siguiente figura se muestra el diseño de la propuesta de solución del de
 
 ## Ejecución
 
-Actualmente el SMAM cuenta con dos versiones, una que puedes poner en marcha de forma local y otra que puedes poner en marcha de forma distribuida. Dentro del directorio `smam` se encuentran las instrucciones para poner en marcha cualquier versión del SMAM.
+- Entramos a la carpeta del SMAM:
+   ```shell
+   (venv)$ cd smam
+   ```
+
+- Ejecutamos el simulador:
+   ```shell
+   (venv)$ python simulador.py
+   ```
+   Durante la inicialización del simulador deberemos de ingresar la cantidad de adultos a ser monitoreados.
+
+- Finalmente, para visualizar las alertas entramos a la carpeta de suscriptores:
+   ```shell
+   (venv)$ cd suscriptores
+   ```
+
+- y ejecutamos el monitor que queramos visualizar, por ejemplo:
+   ```shell
+   (venv)$ python procesador_de_presion.py 
+   ```
 
 ## Versión
 
-2.1.0 - Marzo 2020
+2.1.1 - Marzo 2020
 
 ## Autores
 
