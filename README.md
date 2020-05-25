@@ -1,4 +1,4 @@
-# Arquitecturas Publica-Suscribe
+# Arquitectura Publica-Suscribe
 
 ## Sistema de Monitoreo de Adultos Mayores (SMAM)
 
@@ -58,7 +58,7 @@ En la siguiente figura se muestra el diseño de la propuesta de solución del de
    *__Nota__: También puedes instalar estos prerrequisitos manualmente ejecutando los siguientes comandos:*   
    > pip3 install pika== 1.1.0
 
-- Instalamos RabbitMQ. La manera recomendada para implementar una instancia de RabbitMQ es utilizando [Docker](https://www.docker.com/), para instalarlo puedes seguir las instrucciones para cada sistema operativo haciendo clic [aquí](https://docs.docker.com/install/). Una vez instalado docker instalado podemos ejecutar el siguiente comando:
+- Instalamos RabbitMQ. La manera recomendada para implementar una instancia de RabbitMQ es utilizando [Docker](https://www.docker.com/), para instalarlo puedes seguir las instrucciones para cada sistema operativo haciendo clic [aquí](https://docs.docker.com/install/). Una vez instalado docker podemos ejecutar el siguiente comando:
 
     ```shell
     $ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
