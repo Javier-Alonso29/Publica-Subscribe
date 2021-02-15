@@ -8,12 +8,12 @@ La fundación Catalina Huffmann, que es una fundación altruista en la región, 
 
 En la siguiente figura se muestra el diseño de la propuesta de solución del departamento de desarrollo para el SMAM.
 
-![Vista de contenedores del SMAM](docs/diagrama_contenedores_capitulo_4.png)
+![Vista de contenedores del SMAM](docs/diagrama_contenedores_capitulo_4_v2.png)
 
 ## Prerrequisitos
 - Clonar el repositorio:
    ```shell
-   $ https://gitlab.com/tareas-arquitectura-de-software-curso/publica-suscribe
+   $ git clone https://gitlab.com/tareas-arquitectura-de-software-curso/publica-suscribe
    $ cd publica-subscribe
    ```
 - Contar con python 3.6 o superior y pip3 (las pruebas fueron realizadas con la versión 3.6.10). Se recomienda utilizar [pyenv](https://github.com/pyenv/pyenv) como manejador de versiones de python; una vez instalado se pueden seguir los siguientes comandos para instalar la versión deseada de python, esto hay que realizarlo en la raíz del repositorio:
@@ -27,7 +27,12 @@ En la siguiente figura se muestra el diseño de la propuesta de solución del de
    $ python3 -m venv venv
    ```
 
-   o en Windows:
+   en Windows:
+   ```shell
+   $ python3 -m venv venv
+   ```
+
+   si no funciona el comando anterior, ejecutar el siguiente:
    ```shell
    $ py -3 -m venv venv
    ```
