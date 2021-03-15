@@ -77,8 +77,21 @@
 #           |                             |          Ninguno         |  - Simula la presión  |
 #           | simulate_blood_preasure()   |                          |    arterial.          |
 #           +-----------------------------+--------------------------+-----------------------+
-#
-#-------------------------------------------------------------------------
+#           |                             |                          |                       |
+#           | simulate_medicine()         |          Ninguno         |  - Simula algun tipo  | 
+#           |                             |                          |   de medicamento.     |
+#           +-----------------------------+--------------------------+-----------------------+
+#           |                             |                          |                       |
+#           | simulate_dose()             |     String: Medicamneto  |  - Simula la dosis    |
+#           |                             |                          |  del medicamento      |
+#           +-----------------------------+--------------------------+-----------------------+
+#           |                             |                          |                       |
+#           | simulate_hour()             |         Ninguno          |  - Simula la hora y   |
+#           |                             |                          |    minuto de aplicion |
+#           |                             |                          |    del medicamento    |
+#           +-----------------------------+--------------------------+-----------------------+
+
+#-------------------------------------------------------------------------                  
 import pika
 import random
 import time
@@ -173,6 +186,31 @@ class XiaomiMyBand:
             delivery_mode=2,)) # Se realiza la publicación del mensaje en el Distribuidor de Mensajes
         connection.close() #Se cierra la conexión
 
+        time.sleep(1)
+        
+        message = {}
+        message['medicine'] = self.simulate_medicine()
+        message['dose'] = self.simulate_dose(message['medicine'])
+        message['hour'] = self.simulate_hour()
+        message['minute'] = self.simulate_minute()
+        message['id'] = str(self.id)
+        message['producer'] = self.producer
+        message['model'] = self.model
+        message['hardware_version'] = self.hardware_version
+        message['software_version'] = self.software_version
+        # Se establece la conexión con el Distribuidor de Mensajes
+        connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+        # Se solicita un canal por el cuál se enviarán los signos vitales
+        channel = connection.channel()
+        channel.queue_declare(queue='medication_time', durable=True)
+        channel.basic_publish(exchange='', routing_key='medication_time', body=str(message), properties=pika.BasicProperties(
+            delivery_mode=2,))  # Se realiza la publicación del mensaje en el Distribuidor de Mensajes
+        connection.close()  # Se cierra la conexión
+
+
+
+    def simulate_datetime(self):
+        return time.strftime("%d:%m:%Y:%H:%M:%S")
 
     def simulate_x_position(self):
         return random.uniform(0, 1)
@@ -209,3 +247,65 @@ class XiaomiMyBand:
 
     def simulate_blood_preasure(self):
         return random.randint(100, 200)
+
+    def simulate_medicine(self):
+        type_medicine = random.randint(1,10)
+
+        medicine = ''
+
+        if type_medicine == 1:
+            medicine = 'Aspirina' #2
+
+        elif type_medicine == 2:
+            medicine = 'Paracetamol' #2
+        
+        elif type_medicine == 3:
+            medicine = 'Calcitrol' #
+
+        elif type_medicine == 4:
+            medicine = 'Fluoxetina'
+        
+        elif type_medicine == 5:
+            medicine = 'Bezafibiato'
+
+        elif type_medicine == 6:
+            medicine = 'Calcio' #2
+
+        elif type_medicine == 7:
+            medicine = 'Glibenclamida'
+        
+        elif type_medicine == 8:
+            medicine = 'Complejo B' #2
+        
+        elif type_medicine == 9:
+            medicine = 'Amlodipino' #1
+
+        elif type_medicine == 10:
+            medicine = 'Atrovastatina' #1
+
+        return medicine
+
+
+    def simulate_dose(self, medicine):
+
+        if medicine == 'Calcio' or medicine == 'Complejo B' or medicine == 'Aspirina' or medicine == 'Paracetamol' or medicine == 'Fluoxetina' or medicine == 'Bezafibiato':
+
+            return 2
+
+        elif medicine == 'Amlodipino' or medicine == 'Atrovastatina' or medicine == 'Glibenclamida' or medicine == 'Calcitrol':
+            
+            return 1
+
+    def simulate_hour(self):
+
+        # return time.strftime("%H")
+        return 8
+
+    def simulate_minute(self):
+
+        # return time.strftime("%M")
+        return 0
+
+        
+
+

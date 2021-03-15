@@ -58,7 +58,7 @@ class Monitor:
         print("  ---------------------------------------------------")
         print("    ADVERTENCIA")
         print("  ---------------------------------------------------")
-        print("    La prescripción de: " + " (" + str(name_param) + ") " + " a las " + str(self.format_datetime(datetime)) + ", con dosis: "+ str(dose) + " en el adulto mayor que utiliza el dispositivo " + str(model) + ":" + str(id) +" tiene que ser suministrada.")
+        print("    La prescripción de: " + " (" + str(name_param) + ") " + " a las " + str(datetime) + ", con dosis: "+ str(dose) + " en el adulto mayor que utiliza el dispositivo " + str(model) + ":" + str(id) +" tiene que ser suministrada.")
         print("")
         print("")
 
