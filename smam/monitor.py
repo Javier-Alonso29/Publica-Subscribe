@@ -54,6 +54,22 @@ class Monitor:
         print("")
         print("")
 
+    def print_notification_dose(self, datetime, id, name_param, dose, model):
+        print("  ---------------------------------------------------")
+        print("    ADVERTENCIA")
+        print("  ---------------------------------------------------")
+        print("    La prescripción de: " + " (" + str(name_param) + ") " + " a las " + str(self.format_datetime(datetime)) + ", con dosis: "+ str(dose) + " en el adulto mayor que utiliza el dispositivo " + str(model) + ":" + str(id) +" tiene que ser suministrada.")
+        print("")
+        print("")
+
+    def print_notification_cordinate(self, datetime, id, coordenada_y, coordenada_x, model, name_param):
+        print("  ---------------------------------------------------")
+        print("    ADVERTENCIA")
+        print("  ---------------------------------------------------")
+        print("    Se ha detectado una " + str(name_param) +" en" + " (" + str(coordenada_x) + ", " + str(coordenada_y) + ")" + " a las " + str(self.format_datetime(datetime)) + " en el adulto mayor que utiliza el dispositivo " + str(model) + ":" + str(id))
+        print("")
+        print("")
+
     def format_datetime(self, datetime):
         values_datetime = datetime.split(':')
         f_datetime = values_datetime[3] + ":" + values_datetime[4] + " del " + \
