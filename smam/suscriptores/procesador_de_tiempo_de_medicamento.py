@@ -1,3 +1,68 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#-------------------------------------------------------------------------
+# Archivo: procesador_de_tiempo_de_medicamento.py
+# Capitulo: 3 Estilo Publica-Subscribe
+# Autor(es): Carlos Javier.
+# Version: 1.0 Marzo 2021
+# Descripción:
+#
+#   Esta clase define el rol de un suscriptor, es decir, es un componente que recibe mensajes.
+#
+#   Las características de ésta clase son las siguientes:
+#
+#                                     procesador_de_tiempo_de_medicamento.py
+#           +-----------------------+-------------------------+------------------------+
+#           |  Nombre del elemento  |     Responsabilidad     |      Propiedades       |
+#           +-----------------------+-------------------------+------------------------+
+#           |                       |                         |  - Se suscribe a los   |
+#           |                       |                         |    eventos generados   |
+#           |                       |  - Procesar el tiempo   |    por el wearable     |
+#           |     Procesador de     |    para determinar la   |    Xiaomi My Band.     |
+#           |     tiempo de         |    prescripción del     |                        |         
+#           |     medicamento       |    medicamento.         |  - Define la hora,     |
+#           |                       |                         |    el medicamento y    |
+#           |                       |                         |    la dosis para       |
+#           |                       |                         |    prescripción.       |
+#           |                       |                         |                        |
+#           |                       |                         |                        |
+#           +-----------------------+-------------------------+------------------------+
+#
+#   A continuación se describen los métodos que se implementaron en ésta clase:
+#
+#                                               Métodos:
+#           +------------------------+--------------------------+-----------------------+
+#           |         Nombre         |        Parámetros        |        Función        |
+#           +------------------------+--------------------------+-----------------------+
+#           |                        |                          |  - Recibe las horas,  |
+#           |       consume()        |          Ninguno         |    los medicamentos y |
+#           |                        |                          |    la dosis para la   |
+#           |                        |                          |    prescripción del   |
+#           |                        |                          |    adulto mayor       |
+#           |                        |                          |    desde el distribui-|
+#           |                        |                          |    dor de mensajes.   |
+#           +------------------------+--------------------------+-----------------------+
+#           |                        |  - ch: propio de Rabbit. |  - Procesa y detecta  |
+#           |                        |  - method: propio de     |    hora y medicamento |
+#           |                        |     Rabbit.              |    que se debe de     |
+#           |       callback()       |  - properties: propio de |    suministrar.       |
+#           |                        |     Rabbit.              |                       |
+#           |                        |  - body: mensaje recibi- |                       |
+#           |                        |     do.                  |                       |
+#           +------------------------+--------------------------+-----------------------+
+#           |    string_to_json()    |  - string: texto a con-  |  - Convierte un string|
+#           |                        |     vertir en JSON.      |    en un objeto JSON. |
+#           +------------------------+--------------------------+-----------------------+
+#
+#
+#           Nota: "propio de Rabbit" implica que se utilizan de manera interna para realizar
+#            de manera correcta la recepcion de datos, para éste ejemplo no hubo necesidad
+#            de utilizarlos y para evitar la sobrecarga de información se han omitido sus
+#            detalles. Para más información acerca del funcionamiento interno de RabbitMQ
+#            puedes visitar: https://www.rabbitmq.com/
+#
+#-------------------------------------------------------------------------
+
 import pika
 import sys
 sys.path.append('../')
@@ -33,7 +98,7 @@ class ProcesadorMedicamentos:
 
         datetime = json_message['hour']+':'+json_message['minute']
 
-        
+        # Establecemos horas de suministro de medicamentos para los adultos
         if hour == 8 or hour == 16 or hour == 22:
 
             if minute == 0:

@@ -298,13 +298,13 @@ class XiaomiMyBand:
 
     def simulate_hour(self):
 
-        # return time.strftime("%H")
-        return 8
+        return time.strftime("%H")
+        #return 8
 
     def simulate_minute(self):
 
-        # return time.strftime("%M")
-        return 0
+        return time.strftime("%M")
+        #return 0
 
         
 
